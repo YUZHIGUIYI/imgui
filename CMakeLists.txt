@@ -14,8 +14,3 @@ set(ImGuiFiles
 add_library(ImGuiDocking STATIC ${ImGuiFiles})
 
 target_include_directories(ImGuiDocking PUBLIC ${CMAKE_CURRENT_LIST_DIR})
-
-add_custom_command(TARGET ImGuiDocking 
-    POST_BUILD 
-    COMMAND 
-        ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_LIST_DIR}/misc/fonts ${PROJECT_SOURCE_DIR}/bin/fonts)
