@@ -196,8 +196,7 @@ int main(int, char**)
     return 0;
 }
 
-// Helper functions
-
+// Helper functions to use DirectX11
 bool CreateDeviceD3D(HWND hWnd)
 {
     // Setup swap chain
