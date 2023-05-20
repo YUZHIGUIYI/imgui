@@ -1,16 +1,12 @@
-set(ImGuiFiles
-    ${CMAKE_CURRENT_LIST_DIR}/imconfig.h
-    ${CMAKE_CURRENT_LIST_DIR}/imgui.h
-    ${CMAKE_CURRENT_LIST_DIR}/imgui.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imstb_truetype.h
-    ${CMAKE_CURRENT_LIST_DIR}/imstb_textedit.h
-    ${CMAKE_CURRENT_LIST_DIR}/imstb_rectpack.h
-    ${CMAKE_CURRENT_LIST_DIR}/imgui_internal.h
-    ${CMAKE_CURRENT_LIST_DIR}/imgui_demo.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imgui_draw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imgui_tables.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imgui_widgets.cpp)
+cmake_minimum_required(VERSION 3.15)
 
-add_library(ImGuiDocking STATIC ${ImGuiFiles})
+project(ImGui LANGUAGES CXX C)
 
-target_include_directories(ImGuiDocking PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+file(GLOB IMGUI_SRC_FILES "${CMAKE_CURRENT_LIST_DIR}/*.h" "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
+
+add_library(ImGui STATIC ${IMGUI_SRC_FILES})
+
+target_include_directories(ImGui PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+
+set_target_properties(ImGui PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}")
+set_target_properties(ImGui PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}")
