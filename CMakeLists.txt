@@ -3,8 +3,9 @@ cmake_minimum_required(VERSION 3.15)
 project(ImGui LANGUAGES CXX C)
 
 file(GLOB IMGUI_SRC_FILES "${CMAKE_CURRENT_LIST_DIR}/*.h" "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
+file(GLOB IMGUI_USER_SRC_FILES "${CMAKE_CURRENT_LIST_DIR}/imgui_user/*.h" "${CMAKE_CURRENT_LIST_DIR}/imgui_user/*.cpp")
 
-add_library(ImGui STATIC ${IMGUI_SRC_FILES})
+add_library(ImGui STATIC ${IMGUI_SRC_FILES} ${IMGUI_USER_SRC_FILES})
 
 target_include_directories(ImGui PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 
